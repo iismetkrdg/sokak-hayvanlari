@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} İletişim {% endblock %}
+
+
+{% block content %} 
+<br><br>
+<div class="container new mt-3 mb-4 border-white">
+   <div class="card mt-4" style="background-color: transparent; border: none;">
+      <h3 class="text-center mymt-3">İletişim Bilgileri</h3>
+      <div class="card-body text-center">
+         <div class="row mymb-4" >
+            <div class="col-md-10 offset-md-1 mt-2">
+               <div class="card mt-1 mb-4">
+                  <div class="card-body">
+                     <address>
+                        <strong style="border: 2px solid black; padding: 0.5% ;">Sokaktakiler Ekibi</strong>
+                        <br>
+                        <hr>
+                        "Galatasaray Üniversitesi, Çırağan Caddesi"
+                        <br>
+                        "Beşiktaş / İstanbul"
+                        <br>
+                        <abbr title="Bize mail gönderin.">E-mail:</abbr>
+                        <a href="mailto:sokaktakilerekibi@gmail.com" target="_blank">sokaktakilerekibi@gmail.com</a>
+                        <br>
+                     </address>
+                  </div>
+               </div>
+               <address>
+                  <a href=""><i style="font-size: 35px;" class="bi bi-twitter"></i></a>&nbsp;&nbsp;
+                  <a href=""><i style="font-size: 35px;" class="bi bi-instagram"></i></a>&nbsp;&nbsp;
+                  <a href=""><i style="font-size: 35px;" class="bi bi-facebook"></i></a>&nbsp;&nbsp;
+               </address> 
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+

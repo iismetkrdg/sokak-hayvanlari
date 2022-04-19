@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Detay Ekranı {% endblock %}
+
+
+{% block content %} 
+<div class="container">
+   <div class="row mt-4">
+      <div class="col-md-10 offset-md-1">
+         <div class="card">
+            <div class="card-body">
+               {{adres}}
+            </div>
+         </div>
+         <div class="alert alert-success text-center mt-4">
+            Bu yuva 1 kg mamayı yaklaşık {{oran}} günde bitiriyor.
+         </div>
+      </div>
+      <div class="row mt-2">
+         <div class="col-md-6 offset-md-4">
+            <form name="form1" method="POST" onsubmit="return validateForm()">
+               {% csrf_token %}         
+               <input class="form-control" style="width: 15em; float: left;" name="kackilo" type="text" placeholder="Kaç gram mama bıraktınız?" aria-label="default input example">
+               <input hidden type="text" value="{{kulube.id}}" name="id">
+               <input type="submit" id="demo" name="yuva" value="Mama Bıraktım" class="btn btn-primary">
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="row mt-4">
+      <div class="col-md-10 offset-md-1">
+         {{m|safe}}
+      </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+<script>
+function validateForm() {
+   var x = document.forms["form1"]["kackilo"].value;
+   if (x == "") {
+     alert("Kaç gram mama bıraktığınızı yazmalısınız.");
+     return false;
+   }
+   if (x < 50) {
+     alert("Minimum değer 50 gramdır.");
+     return false;
+   }
+   if (x > 5000) {
+      alert("Gerçekten 5 kg üzeri mama bıraktıysanız parçalayarak yazınız.");
+      return false;
+   }
+ }
+</script>
+
+{% endblock %}
+

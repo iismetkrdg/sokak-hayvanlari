@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{profil.username}} Profili {% endblock %}
+
+
+{% block content %} 
+<div class="container new border-white mymt-4 mymb-4">
+   <br>
+   <div class="row mb-3" >
+      <div class="col-md-10 offset-md-1 mymb-4 mymt-1">
+         <div class="row" style="background-color: transparent;">
+            <div class="col-md-8 offset-md-2 mb-4">
+               <p class="h2 text-center">Profil</p>
+            </div>
+         </div>
+         {% if user.is_staff %}
+         <div class="row">
+            <a href="/admin" class="text-center">Admin Paneli</a>
+         </div>
+         {% endif %}
+         <div class="row mb-3 bg-light border-white">
+            <div class="col-md-6 offset-md-3">
+               <div class="row mt-4" style="padding: 1%;">
+                  <div class="col-md-6 text-profil">
+                     <p>Kullanıcı adı</p><p>Ad</p><p>Soyad</p><p>Email</p><p>Besleme Sayısı</p>
+                  </div>
+                  <div class="col-md-2">
+                     <p>:</p><p>:</p><p>:</p><p>:</p><p>:</p>
+                  </div>
+                  <div class="col-md-4 text-profil" >
+                     <p>{{profil.username}} </p><p>{{profil2.first_name}} </p><p>{{profil2.last_name}} </p><p>{{profil2.email}} </p><p>{{profil.beslemesayısı}} </p> 
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+{% endblock %}
+
+

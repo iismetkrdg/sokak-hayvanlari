@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Doğrulama Tamamlandı {% endblock %}
+
+{% block content %} 
+<div class="container mt-3">
+   <br><br><br><br>
+   <div class=" col-md-8 offset-md-2 text-center border-black pad-5" >
+      
+      <p style="font-size: 50px;">Doğrulama tamamlandı.</p>
+      <p style="color: red; font-size: 25px;" >Giriş yapabilirsin.</p>
+      <a href="{% url 'login' %}">Giriş yap</a>
+      
+   </div>
+   <br><br><br><br><br><br>
+</div>
+
+  
+{% endblock %}

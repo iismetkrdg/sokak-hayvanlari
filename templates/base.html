@@ -1,0 +1,29 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title> {% block title %}{% endblock %} | Sokaktakiler</title>
+   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+   <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+</head>
+<body>
+   
+   {% include 'partials/_navbar.html' %}
+   {% block content %}
+   {% endblock %}
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   {% block js_files %}
+   {% endblock %}
+   <footer class="myfooter">
+      <em> &copy; Sokaktakiler </em>
+   </footer>
+   <hr class="mt-4 mb-4">
+   
+</body>
+</html>

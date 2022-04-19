@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Giriş Yap {% endblock %}
+{% block css_files %}
+   <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3 text-login-container">
+   
+   <div class="col-md-8 offset-md-2">
+      <h1 class="text-login">Sokaktakiler</h1>
+      <h2 class="text-login text-end">Giriş Yap</h1>
+      <hr>
+      <form  method="POST">
+         {% csrf_token %}
+         {% if error %}
+            <div class="alert alert-danger">
+               {{error}}
+            </div>
+         {% endif %}
+         {% if messages %}
+         <ul style="list-style: none;" class="messages alert alert-success text-center">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+         </ul>
+         {% endif %}
+         <div class="col-md-6 offset-md-3 border-black pad-5">
+            <div class="mb-3">
+               <label for="username" class="form-label">Kullanıcı Adı</label>
+               <input type="text" class="form-control" name="username" >
+            </div>
+            <div class="mb-3">
+               <label for="password" class="form-label">Şifre</label>
+               <input type="password" class="form-control" name="password" >
+            </div>
+            <div class="mb-3"></div>
+            <input type="submit" value="Giriş Yap" class="btn btn-warning col-sm-12 mb-4 mt-3"><br>
+            <hr>
+            <a style="text-decoration: none;" href="{% url 'register' %}">Üye ol!</a><br>
+            <a style="text-decoration: none;" href="{% url 'reset_password' %}">Şifreyi tazele!</a>
+         </div>
+      </form>
+   </div>
+   
+</div>
+
+<br><br><br><br><br><br>
+{% endblock %}

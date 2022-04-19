@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Bul {% endblock %}
+
+{% block content %} 
+<div class="container">
+   {% if mesaj %}
+      <div class="alert alert-success mt-3">
+         <p style="text-align: center;">{{mesaj}}</p>
+      </div>
+   {% endif %}
+<div class="album py-5 bg-light">
+   <div class="container">
+      <div class="alert alert-success col-md-6 text-center offset-md-3 ">
+         Konum servisiniz açıksa bu sayfadan yararlanabilirsiniz.
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+         {% for kulube in ks %}
+            <div class="col-sm-4" name="kart" hidden>
+               <div class="card mt-3">
+                  <p class="h2" hidden>{{kulube.latitude}}</p>
+                  <p class="h3" hidden>{{kulube.longitude}}</p>
+                  <img src="{% static 'img/'|add:kulube.img %}" alt="" style="max-width: 414px;max-height: 210px;" class="card-img-top img-fluid">
+                  <div class="card-body height-card">
+                     <h5 class="card-title">{{kulube.il|title}}&nbsp;|&nbsp;{{kulube.ilçe}}&nbsp;|&nbsp;{{kulube.mahalle|title}}</h5>
+                     <p class="card-text ucnokta">{{kulube.acıklama}}</p>
+                     <div class="row my-button mb-2">
+                        <p class="card-text text-muted">En son {{kulube.sontarih}}'da beslendi.</p>
+                        <a href="{%url 'yuva_details' kulube.id %}" class="btn btn-warning width-100">Detay</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+<p id="positionlang" hidden></p>
+<p id="positionlong" hidden> </p>
+<script>
+   var div = document.getElementById("positionlang")
+   var div2 = document.getElementById("positionlong")
+   function getLocation() {
+     if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+      div.innerHTML="The Browser Does not Support Geolocation";
+      }
+   }
+   function showPosition(position) {
+      div.innerHTML= position.coords.latitude 
+      div2.innerHTML= position.coords.longitude 
+   }
+   function showError(error) {
+      if(error.PERMISSION_DENIED){
+         console.log("The User have denied the request for Geolocation.");
+      }
+   }
+   getLocation();
+   function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+   }
+   async function demo() {
+         for (let i = 0; i < 3; i++) {
+            console.log(`Waiting ${i} seconds...`);
+            await sleep(i * 1000);
+         }
+         var list = document.getElementsByName("kart")
+         var lats2= document.getElementById("positionlang").innerHTML
+         var lngs2 = document.getElementById("positionlong").innerHTML
+         var list2= []
+         for (let i = 0; i< list.length; i++) {
+            var lats = list[i].getElementsByClassName("h2")[0].innerHTML
+            var lngs = list[i].getElementsByClassName("h3")[0].innerHTML
+            if (((((lats-lats2)**2) +((lngs-lngs2)**2))**(1/2))<0.007) {
+               list2.push(list[i])
+            }
+         for (let i = 0; i< list2.length; i++) {
+            list2[i].hidden=false
+         }
+         };
+   }
+   demo();
+</script>   
+{% endblock %}
+
+
