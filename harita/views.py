@@ -1,6 +1,7 @@
-from typing import List
+from pyexpat import model
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
+from django.template import context
 import folium
 from .models import Kulube, Person
 import geocoder
@@ -69,22 +70,21 @@ class WelcomeView(ListView):
       context['yuvabildirme'] = yuvabildirsayıları()
       context['mamakg'] = mamakilo()
       return context
-
-def harita(request):
-   try:
+class HaritaView(ListView):
+   model = Kulube
+   template_name = "harita/harita.html"
+   
+   def get_context_data(self,**kwargs):
+      context = super().get_context_data(**kwargs)
       ks=Kulube.objects.all()
       m=folium.Map(location=[41.02,29],zoom_start=12)
       for i in list(ks):
-         text="<a target='_blank' href='/yuva_details/" +{i.id} + ">Detay</a>"
+         text=f"<a target='_blank' href='/yuva_details/{i.id}> Detay </a>"
+         print(text)
          folium.Marker([i.latitude,i.longitude],popup=text,tooltip="Detay için tıklayın.").add_to(m)
       m=m._repr_html_()
-      context={
-         "m":m, 
-      }
-      return render(request,"harita/harita.html",context)
-   except:
-      messages.add_message(request,messages.ERROR,"Harita sayfası şuan bakımda. Az sonra tekrar deneyebilirsiniz.")
-      return redirect("home")
+      context['m']=m
+      return context
 
 def yuva_details(request,id):
    try:
@@ -164,23 +164,11 @@ def yuvabildir(request):
       messages.add_message(request,messages.ERROR,"Bir sorun oluştu.")
       return redirect("home")
 
-def bul(request):
-   try:
-      di={}
-      ks=Kulube.objects.all()
-      for i in list(ks):
-         di[i.id]=i.sontarih
-      a=dict(sorted(di.items(), key=lambda item: item[1]))
-      kl=[]
-      for i in list(a):
-         kl.append(Kulube.objects.filter(id=i).first())
-      context={
-         "ks":kl,
-      }
-      return render(request,"harita/bul.html",context)
-   except:
-      messages.add_message(request,messages.ERROR,"Bir sorun oluştu.")
-      return redirect("home")
+
+class BulView(ListView):
+   model = Kulube
+   template_name = 'harita/bul.html'
+   context_object_name = 'kulubeler'
 
 def profil(request):
    try:
@@ -198,12 +186,8 @@ def profil(request):
       messages.add_message(request,messages.ERROR,"Bir sorun oluştu.")
       return redirect("home")
 
-def iletisim(request):
-   try:
-      return render(request,"harita/iletisim.html")
-   except:
-      messages.add_message(request,messages.ERROR,"Bir sorun oluştu.")
-      return redirect("home")
+class IletisimView(TemplateView):
+   template_name = 'harita/iletisim.html'
 
 
 
