@@ -4,7 +4,7 @@ from django.db import models
 
 class Kulube(models.Model):
    il=models.CharField(max_length=50)
-   ilçe=models.CharField(max_length=100)
+   ilce=models.CharField(max_length=100)
    mahalle=models.CharField(max_length=100)
    sokak=models.CharField(max_length=100)
    kapı=models.CharField(max_length=50)
@@ -19,7 +19,8 @@ class Kulube(models.Model):
 
    def __str__(self):
       return f"{self.il}{self.ilçe}{self.sokak}"
-
+   class Meta:
+      ordering = ['sontarih']
 class Person(models.Model):
    username=models.CharField(max_length=25)
    beslemesayısı=models.IntegerField(null=True,default=0)
