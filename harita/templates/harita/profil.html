@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} {{profil.username}} Profili {% endblock %}
+{% block title %} {{person.username}} Profili {% endblock %}
 
 
 {% block content %} 
@@ -29,7 +29,7 @@
                      <p>:</p><p>:</p><p>:</p><p>:</p><p>:</p>
                   </div>
                   <div class="col-md-4 text-profil" >
-                     <p>{{profil.username}} </p><p>{{profil2.first_name}} </p><p>{{profil2.last_name}} </p><p>{{profil2.email}} </p><p>{{profil.beslemesayısı}} </p> 
+                     <p>{{person.username}} </p><p>{{user.first_name}} </p><p>{{user.last_name}} </p><p>{{user.email}} </p><p>{{person.beslemesayısı}} </p> 
                   </div>
                </div>
             </div>
