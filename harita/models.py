@@ -1,4 +1,5 @@
 
+import random
 from django.db import models
 
 
@@ -13,12 +14,12 @@ class Kulube(models.Model):
    sontarih=models.DateTimeField(auto_now=True)
    created_at=models.DateTimeField(auto_now_add=True)
    sayac=models.IntegerField(null=True,default=1)
-   img=models.CharField(max_length=100,null=True)
+   img=models.CharField(max_length=100,null=True,default=f'{str(random.randint(1,8))}.jpeg')
    latitude=models.CharField(max_length=20,null=True)
    longitude=models.CharField(max_length=20,null=True)
 
    def __str__(self):
-      return f"{self.il}{self.ilçe}{self.sokak}"
+      return f"{self.il}{self.ilce}{self.sokak}"
    class Meta:
       ordering = ['sontarih']
 class Person(models.Model):
@@ -31,4 +32,4 @@ class Person(models.Model):
    def __str__(self):
       return self.username
    class Meta:
-       ordering = ['beslemesayısı']
+       ordering = ['-beslemesayısı']
