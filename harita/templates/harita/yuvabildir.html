@@ -9,7 +9,7 @@
    <div class=" col-md-8 offset-md-2 ">
       <h1>Yuva bildir</h1>
       <hr>
-      <form method="POST" name="form2" onsubmit="return validateForm()">
+      <form method="POST" name="form" onsubmit="return validateForm()">
          {% csrf_token %}
          <div class="row mt-3">
             <div class="col">
@@ -32,19 +32,24 @@
             </div>
             <div class="col">
                <label for="kapı" class="form-label">Bina No</label>
-               <input type="text" name="kapı" placeholder="Yuvaya Yakın Bir Bina No" class="form-control">
+               <input type="text" name="kapi" placeholder="Yuvaya Yakın Bir Bina No" class="form-control">
             </div>
          </div>
          <div class="mt-4">
             <label for="acıklama" class="form-label">Açıklama</label>
             <input type="text" name="acıklama" placeholder="Kısaca yuvanın durumunu özetleyebilirsiniz" class="form-control">
          </div>
+         <div class="mt-4">
+            <select class="form-select" name="dogcat" id="">
+               <option disabled selected value="">Kedi veya köpek yuvası</option>
+               <option value="Kedi">Kedi</option>
+               <option value="Köpek">Köpek</option>
+            </select>
+         </div>
          
          <div class="mt-3"></div>
          <br>
-         <input type="text" hidden name="lat" value="" id="lat">
-         <input type="text" hidden name="lng" value="" id="lng">
-         <button type="button" class="ml-5 btn btn-primary" id="go">Bildir</button>
+         <button type="submit" class="ml-5 btn btn-primary" id="go">Bildir</button>
          <br><br><br><br><br><br><br><br>
       </form>
    </div>
@@ -52,34 +57,18 @@
 <script type="text/javascript">
    
    function validateForm() {
-      var x = document.forms["form2"]["mahalle"].value;
+      var x = document.forms["form"]["mahalle"].value;
       if (x == "") {
         alert("Mahalle adı girin!");
         return false;
       }
-      var x = document.forms["form2"]["sokak"].value;
+      var x = document.forms["form"]["sokak"].value;
       if (x == "") {
         alert("Sokak adı girin!");
         return false;
       }
    }
-   
-   document.getElementById('go').addEventListener('click', () => {
-   var il = document.getElementById('il').value;
-   var ilce = document.getElementById('ilce').value;
-   var sokak = document.getElementById('sokak').value;
 
-
-   fetch(`https://nominatim.openstreetmap.org/search?q=${sokak}+${il}&format=json&addressdetails=1`)
-         .then(result => result.json())
-         .then(parsedResult => {
-            document.getElementById('lat').value=parsedResult[0]['lat'];
-            document.getElementById('lng').value=parsedResult[0]['lon'];
-         });
-   });
-//lat long varlığı kontrol edilip daha sonra rest-apiye bağlanacak bulunamazsa hata ekranı
-
-   
 </script>
 
 {% endblock %}
