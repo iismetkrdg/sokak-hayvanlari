@@ -25,7 +25,7 @@
                   {% for data in besleme %}
                   <tr>
                      <td>{{data.username}}</td>
-                     <td>{{data.beslemesayısı}}</td>
+                     <td>{{data.beslemesayisi}}</td>
                   </tr>
                   {% endfor %}
                </tbody>
@@ -41,7 +41,7 @@
                   {% for data in yuvabildirme %}
                   <tr>
                      <td>{{data.username}}</td>
-                     <td>{{data.bildirmesayısı}}</td>
+                     <td>{{data.bildirmesayisi}}</td>
                   </tr>
                   {% endfor %}
                </tbody>
@@ -74,8 +74,9 @@
          <div class="card mt-3">
             <img src="{% static 'img/'|add:kulube.img %}" alt="" style="max-width: 414px;max-height: 210px;" class="card-img-top img-fluid">
             <div class="card-body height-card">
-               <h5 class="card-title">{{kulube.il|title}}&nbsp;|&nbsp;{{kulube.ilçe|title}}&nbsp;|&nbsp;{{kulube.mahalle|title}}</h5>
-               <p class="card-text ucnokta">{{kulube.acıklama}}</p>
+               <h5 class="card-title">{{kulube.il|title}}&nbsp;|&nbsp;{{kulube.ilce|title}}&nbsp;|&nbsp;{{kulube.mahalle|title}}</h5>
+               <p class="card-text ucnokta">{{kulube.aciklama}}</p>
+               <p class="card-text">{{kulube.dogcat}}</p>
                <div class="row my-button mb-2">
                   <p class="card-text text-muted">En son {{kulube.sontarih}}'da beslendi.</p>
                   <a href="{%url 'yuva_details' kulube.id %}" class="btn btn-warning width-100">Detay</a>
