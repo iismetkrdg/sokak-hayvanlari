@@ -18,8 +18,7 @@ class Kulube(models.Model):
    latitude = models.CharField(max_length=20,null=True)
    longitude = models.CharField(max_length=20,null=True)
    dogcat = models.CharField(max_length=20,default='Kedi')
-   def __str__(self):
-      return f"{self.il}{self.ilce}{self.sokak}"
+
    class Meta:
       ordering = ['sontarih']
 class Person(models.Model):

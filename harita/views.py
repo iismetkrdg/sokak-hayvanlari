@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import request
 from django.shortcuts import redirect, render
 import folium
 from .models import Kulube, Person
@@ -59,7 +60,7 @@ class YuvaDetailsView(View):
       yuva.save()
       person_object = Person.objects.get(username=request.user)
       person_object.mamakilo += int(request.POST['kackilo'])
-      person_object.beslemesayısı += 1
+      person_object.beslemesayisi += 1
       person_object.save()
       messages.add_message(request,messages.INFO,'Her şey için teşekkürler.')
       return redirect('home')
@@ -76,7 +77,14 @@ class YuvaBildirView(View):
          if not location.lat:
             messages.add_message(request,messages.ERROR,'Girdiğiniz bilgilere ait konum bulunamadı.')
             return redirect('home')
-         form.save()
+         a = form.save()
+         a.latitude = location.lat
+         a.longitude = location.lng
+         a.save()
+         person = Person.objects.get(username=request.user)
+         person.bildirmesayisi += 1
+         person.save()
+         
          messages.add_message(request,messages.INFO,'Her şey için teşekkürler...')
          return redirect('home')
       else:
@@ -99,4 +107,7 @@ class IletisimView(TemplateView):
 
 
 
-
+def custom400(request,exception):
+   return render(request,'harita/not-found.html',status=400)
+def custom404(request,exception):
+   return render(request,'harita/not-found.html',status=404)

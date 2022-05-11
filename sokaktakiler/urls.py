@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from harita.views import custom400,custom404
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="admin"),
     path('',include("harita.urls")),
     path('',include("registration.urls")),
+    path('api-auth/', include('rest_framework.urls')),
 ]
+handler400 = 'harita.views.custom400'
+handler404 = 'harita.views.custom404'
