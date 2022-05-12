@@ -9,7 +9,7 @@
    <div class=" col-md-8 offset-md-2 ">
       <h1>Yuva bildir</h1>
       <hr>
-      <form method="POST" name="form" onsubmit="return validateForm()">
+      <form method="POST" name="form" onsubmit="validateForm()">
          {% csrf_token %}
          <div class="row mt-3">
             <div class="col">
@@ -36,8 +36,8 @@
             </div>
          </div>
          <div class="mt-4">
-            <label for="acıklama" class="form-label">Açıklama</label>
-            <input type="text" name="acıklama" placeholder="Kısaca yuvanın durumunu özetleyebilirsiniz" class="form-control">
+            <label for="aciklama" class="form-label">Açıklama</label>
+            <input type="text" name="aciklama" placeholder="Kısaca yuvanın durumunu özetleyebilirsiniz" class="form-control">
          </div>
          <div class="mt-4">
             <select class="form-select" name="dogcat" id="">

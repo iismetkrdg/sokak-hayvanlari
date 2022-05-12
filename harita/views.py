@@ -1,3 +1,4 @@
+from typing import List
 from django.contrib.auth.models import User
 from django.http import request
 from django.shortcuts import redirect, render
@@ -16,8 +17,6 @@ from django.views import View
 class WelcomeView(ListView):
    model = Kulube
    template_name = "harita/index.html"
-   context_object_name = 'kulubeler'
-
    def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       context['besleme'] = list(Person.objects.all())[:3]

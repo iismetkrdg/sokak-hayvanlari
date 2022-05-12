@@ -1,16 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %} Anasayfa {% endblock %}
-
 {% block content %} 
+
 {% if messages %}
-<ul class="messages alert alert-danger none-center-list mt-2">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content bg-light">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Sokaktakiler</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+       </div>
+       <div class="modal-body my-modal-body">
+         {% for message in messages %}
+         {{ message }}
+         {% endfor %}
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+       </div>
+     </div>
+   </div>
+ </div>
 {% endif %}
+{% if not user.is_authenticated %}
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content bg-light">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Sokaktakiler'e Hoşgeldin</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+       </div>
+       <div class="modal-body my-modal-body">
+         Merhaba aramıza hoşgeldin...
+         <br>
+         Hemen <a class="my-modal-link" href="{% url 'register' %}">buradan</a> üye olabilirsin.
+
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+       </div>
+     </div>
+   </div>
+ </div>
+ {% endif %}
+
 <div class="container mt-4">
    <div class="row border-black">
       <h5 class="text-center table-title mt-4">SKOR TABLOLARI</h5>
@@ -68,26 +102,7 @@
    <br>
    <hr>
    <br>
-   <div class="row">
-      {% for kulube in kulubeler %}
-      <div class="col-sm-4">
-         <div class="card mt-3">
-            <img src="{% static 'img/'|add:kulube.img %}" alt="" style="max-width: 414px;max-height: 210px;" class="card-img-top img-fluid">
-            <div class="card-body height-card">
-               <h5 class="card-title">{{kulube.il|title}}&nbsp;|&nbsp;{{kulube.ilce|title}}&nbsp;|&nbsp;{{kulube.mahalle|title}}</h5>
-               <p class="card-text ucnokta">{{kulube.aciklama}}</p>
-               <p class="card-text">{{kulube.dogcat}}</p>
-               <div class="row my-button mb-2">
-                  <p class="card-text text-muted">En son {{kulube.sontarih}}'da beslendi.</p>
-                  <a href="{%url 'yuva_details' kulube.id %}" class="btn btn-warning width-100">Detay</a>
-               </div>
-            </div>
-         </div>
-      </div>
-      {% endfor %}
+   <div class="row" id='kulube'>
    </div>
 </div>
-
 {% endblock %}
-
-

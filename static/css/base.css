@@ -88,9 +88,15 @@
 .my-button{
    position:absolute;
    bottom: 0px;
-   left: 25px;
-}
+   left: 0px;
 
+}
+.my-date-text{
+   position:absolute;
+   bottom: 10px;
+   left: 5px;
+
+}
 .table-title {
    font-size: 30px;
    font-family: serif;
@@ -115,4 +121,12 @@
            #3CE7D7, #000FFF);
        -webkit-background-clip: text;
    }
+}
+.my-modal-body{
+   color:sandybrown;
+   text-align: center;
+}
+.my-modal-link{
+   color:rgb(104, 38, 38);
+   text-decoration: none;
 }

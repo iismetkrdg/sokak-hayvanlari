@@ -28,12 +28,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
 
+}
 # Application definition
 
 INSTALLED_APPS = [
     'registration',
     'harita',
+    'restapi',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

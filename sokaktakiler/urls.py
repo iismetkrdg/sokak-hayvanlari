@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls,name="admin"),
     path('',include("harita.urls")),
     path('',include("registration.urls")),
+    path('rest/',include('restapi.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]
 handler400 = 'harita.views.custom400'
