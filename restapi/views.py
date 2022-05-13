@@ -7,6 +7,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 
 
 
@@ -16,10 +17,12 @@ class KulubeList(APIView):
    
    def get(self, request, format=None):
       kulubeler = Kulube.objects.all()
-      serializer = KulubeSerializer(kulubeler,many=True)
+      paginator = PageNumberPagination()
+      result = paginator.paginate_queryset(kulubeler,request)
+      serializer = KulubeSerializer(result,many=True)
       return Response(serializer.data)
 class KulubeDetail(APIView):
-
+   
    def get_object(self,pk):
       try:
          return Kulube.objects.get(id=pk)

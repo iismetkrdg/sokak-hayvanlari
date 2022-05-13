@@ -14,8 +14,8 @@ from django.views import View
 
 
 
-class WelcomeView(ListView):
-   model = Kulube
+class WelcomeView(TemplateView):
+
    template_name = "harita/index.html"
    def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
