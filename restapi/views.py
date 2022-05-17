@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from harita.models import Kulube
 from restapi.serializers import KulubeSerializer
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -20,7 +20,11 @@ class KulubeList(APIView):
       paginator = PageNumberPagination()
       result = paginator.paginate_queryset(kulubeler,request)
       serializer = KulubeSerializer(result,many=True)
-      return Response(serializer.data)
+      data = {
+         'next':paginator.get_next_link(),
+         'results':serializer.data
+      }
+      return Response(data)
 class KulubeDetail(APIView):
    
    def get_object(self,pk):
