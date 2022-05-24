@@ -148,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # email 
-SENDGRID_API_KEY = os.getenv('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')
+SENDGRID_API_KEY = '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'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = 'apikey'
