@@ -16,11 +16,3 @@ if (document.getElementById('myModal')){
     })
     
 }
-
-
-
-
-
-
-
-

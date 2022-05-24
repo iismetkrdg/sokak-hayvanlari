@@ -10,21 +10,34 @@
       <div class="col-md-10 offset-md-1">
          <div class="card">
             <div class="card-body">
-               <p>Yuva {{yuva.il|title}},{{yuva.ilce|title}},{{yuva.mahalle|title}},{{yuva.sokak|title}} konumunda, {{yuva.kapı}} no'lu bina yakınlarındadır.</p>
+               <p>Yuva {{yuva.il|title}},{{yuva.ilce|title}},{{yuva.mahalle|title}},{{yuva.sokak|title}} konumunda 
+               {% if yuva.kapi %}
+                  ,{{ yuva.kapi }} no'lu bina yakınlarındadır.
+               {% else %}
+                  dır.
+               {% endif %}
+               </p>
             </div>
          </div>
          <div class="alert alert-success text-center mt-4">
             Bu yuva 1 kg mamayı yaklaşık {{oran}} günde bitiriyor.
          </div>
       </div>
-      <div class="row mt-2">
+      <div class="mt-2">
          <div class="col-md-6 offset-md-4">
+            {% if user.is_authenticated %}
             <form name="form1" method="POST" onsubmit="return validateForm()">
                {% csrf_token %}         
                <input class="form-control" style="width: 15em; float: left;" name="kackilo" type="text" placeholder="Kaç gram mama bıraktınız?" aria-label="default input example">
                <input hidden type="text" value="{{kulube.id}}" name="id">
                <input type="submit" id="demo" name="yuva" value="Mama Bıraktım" class="btn btn-primary">
             </form>
+            {% else %}
+            <div class="alert alert-success text-center mt-4">
+               Mama bırakmak için üye olunuz.
+            </div>
+               
+            {% endif %}
          </div>
       </div>
    </div>

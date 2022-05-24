@@ -57,6 +57,16 @@
 <script type="text/javascript">
    
    function validateForm() {
+      var x = document.forms["form"]["il"].value;
+      if (x == "") {
+        alert("Mahalle adı girin!");
+        return false;
+      }
+      var x = document.forms["form"]["ilce"].value;
+      if (x == "") {
+        alert("Mahalle adı girin!");
+        return false;
+      }
       var x = document.forms["form"]["mahalle"].value;
       if (x == "") {
         alert("Mahalle adı girin!");

@@ -65,8 +65,9 @@ def register_request(request):
                   usern = Person(username=username,auth_token=auth_token)
                   usern.save()
                   send_mail_after_regis(email,auth_token)
-                  return redirect("token_send")
+                  return redirect("tokensend")
                except Exception as e:
+                  print('token yok')
                   return redirect("error")
       else:
          return render(request,"registration/register.html",{

@@ -8,7 +8,7 @@ import datetime
 import geocoder
 from django.contrib import messages
 from .forms import YuvaBildirForms
-from django.views.generic import (CreateView, DetailView, ListView, TemplateView, UpdateView,FormView)
+from django.views.generic import DetailView, ListView, TemplateView
 from django.views import View
 
 
@@ -40,11 +40,6 @@ class YuvaDetailsView(View):
    
    def get(self,request,*args,**kwargs):
       yuva = Kulube.objects.get(id=kwargs['pk'])
-      if yuva.latitude is None:
-         location = geocoder.osm(yuva.il+","+yuva.sokak)
-         yuva.latitude = location.lat
-         yuva.longitude = location.lng
-         yuva.save()
       fark = (datetime.datetime.now(datetime.timezone.utc)-yuva.created_at).days
       oran = int(round(fark/(yuva.sayac/1000)))
       m = folium.Map(location=[yuva.latitude,yuva.longitude],zoom_start=18)
@@ -66,9 +61,13 @@ class YuvaDetailsView(View):
 
 class YuvaBildirView(View):
    def get(self,request,*args, **kwargs):
+      if not request.user.is_authenticated:
+         return redirect('home')
       form = YuvaBildirForms
       return render(request,'harita/yuvabildir.html',{'form':form})
    def post(self,request, *args, **kwargs ):
+      if not request.user.is_authenticated:
+         return redirect('home')
       form = YuvaBildirForms(request.POST)
       if form.is_valid():
          location = geocoder.osm(form.cleaned_data.get('il')+","+form.cleaned_data.get('sokak'))
@@ -88,10 +87,8 @@ class YuvaBildirView(View):
       else:
          messages.add_message(request,messages.ERROR,'Bir hata oluştu.')
          return redirect('home')
-class BulView(ListView):
-   model = Kulube
+class BulView(TemplateView):
    template_name = 'harita/bul.html'
-   context_object_name = 'kulubeler'
 class ProfilView(DetailView):
    model = User
    template_name = 'harita/profil.html'

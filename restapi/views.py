@@ -37,5 +37,16 @@ class KulubeDetail(APIView):
       kulube = self.get_object(pk)
       serializer = KulubeSerializer(kulube)
       return Response(serializer.data)
+class KulubebyLocation(APIView):
+   def get(self,request,lat,lon,format=None):
+      gonder = []
+      kulubeler = Kulube.objects.all()
+      for i in list(kulubeler):
+         fark = ((float(lat)-float(i.latitude))**2 + (float(lon)-float(i.longitude))**2)**(1/2)
+         if fark < 0.006:
+            gonder.append(i)
 
+
+      serializer = KulubeSerializer(gonder,many=True)
+      return Response(serializer.data)
    

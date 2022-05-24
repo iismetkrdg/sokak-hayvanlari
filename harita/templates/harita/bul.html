@@ -4,79 +4,47 @@
 {% block title %} Bul {% endblock %}
 
 {% block content %} 
-<div class="container">
-<div class="album py-5 bg-light">
-   <div class="container">
-      <div class="alert alert-success col-md-6 text-center offset-md-3 ">
-         Konum servisiniz açıksa bu sayfadan yararlanabilirsiniz.
-      </div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-         {% for kulube in kulubeler %}
-            <div class="col-sm-4" name="kart" hidden>
-               <div class="card mt-3">
-                  <p class="h2" hidden>{{kulube.latitude}}</p>
-                  <p class="h3" hidden>{{kulube.longitude}}</p>
-                  <img src="{% static 'img/'|add:kulube.img %}" alt="" style="max-width: 414px;max-height: 210px;" class="card-img-top img-fluid">
-                  <div class="card-body height-card">
-                     <h5 class="card-title">{{kulube.il|title}}&nbsp;|&nbsp;{{kulube.ilce|title}}&nbsp;|&nbsp;{{kulube.mahalle|title}} <p class="card-text">{{kulube.dogcat}} Yuvası</p></h5>
-                     <p class="card-text ucnokta">{{kulube.aciklama}}</p>
-                     <div class="row my-date-text mb-4">
-                        <p class="card-text text-muted"> En son {{kulube.sontarih}}'da beslendi.</p>
-                     </div>
-                     <a href="{%url 'yuva_details' kulube.id %}" class="btn btn-warning width-100 my-button">Detay</a>
-                  </div>
-               </div>
-            </div>
-         {% endfor %}
-      </div>
-   </div>
+<div class="container" id="container">
+<div class="album py-5">
+   <div class="alert alert-success col-md-6 text-center offset-md-3" style="font-size:15px">Konum servisiniz açıksa bu sayfadan yararlanabilirsiniz.</div>
+   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="kulube"></div>
+   
 </div>
-<p id="positionlang" hidden></p>
-<p id="positionlong" hidden> </p>
+<div class="dots-8 show" id="loaders"></div>
 <script>
-   var div = document.getElementById("positionlang")
-   var div2 = document.getElementById("positionlong")
+   const loading = document.querySelector('.dots-8')
    function getLocation() {
      if (navigator.geolocation) {
        navigator.geolocation.getCurrentPosition(showPosition, showError);
       } else {
-      div.innerHTML="The Browser Does not Support Geolocation";
+      alert("The Browser Does not Support Geolocation");
       }
    }
+   async function getKulube(lat,lon) {
+      const response = await fetch('http://127.0.0.1:8000/rest/kulubeler/'+lat+'/'+lon)
+      const data = await response.json()
+      loading.classList.remove('show')
+      if (data.length==0){
+         $('#container').append('<div class="alert alert-secondary text-center">Yakınınızda yuva bulunamadı.</div>')
+      }
+      for (let i = 0; i < data.length; i++) {
+         $('#kulube').append('<div class="col-sm-4 "><div class="card mt-3"><img src="/static/img/'+data[i].img+'" alt="" style="max-width: 420px;max-height: 210px;" class="card-img-top img-fluid"><div class="card-body height-card"><h5 class="card-title">'+data[i].il.toTitle()+'&nbsp;|&nbsp;'+data[i].ilce.toTitle()+'&nbsp;|&nbsp;'+data[i].mahalle.toTitle()+'<p class="card-text">'+data[i].dogcat+' Yuvası</p></h5><p class="card-text ucnokta" style="overflow-y: scroll;">'+data[i].aciklama+'</p><div class="row my-date-text mb-5"><p class="card-text text-muted">En son '+data[i].sontarih+'`da beslendi.</p></div><a href="/yuva_details/'+data[i].id+'" class="btn btn-warning width-100 my-button">Detay</a></div></div></div>')
+      }
+      
+   }
    function showPosition(position) {
-      div.innerHTML= position.coords.latitude 
-      div2.innerHTML= position.coords.longitude 
+      getKulube(position.coords.latitude,position.coords.longitude)
+
    }
    function showError(error) {
       if(error.PERMISSION_DENIED){
+         alert('Konum bilgisi için izin vermediniz.')
          console.log("The User have denied the request for Geolocation.");
       }
    }
    getLocation();
-   function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-   }
-   async function demo() {
-         for (let i = 0; i < 3; i++) {
-            console.log(`Waiting ${i} seconds...`);
-            await sleep(i * 1000);
-         }
-         var list = document.getElementsByName("kart")
-         var lats2= document.getElementById("positionlang").innerHTML
-         var lngs2 = document.getElementById("positionlong").innerHTML
-         var list2= []
-         for (let i = 0; i< list.length; i++) {
-            var lats = list[i].getElementsByClassName("h2")[0].innerHTML
-            var lngs = list[i].getElementsByClassName("h3")[0].innerHTML
-            if (((((lats-lats2)**2) +((lngs-lngs2)**2))**(1/2))<0.007) {
-               list2.push(list[i])
-            }
-         for (let i = 0; i< list2.length; i++) {
-            list2[i].hidden=false
-         }
-         };
-   }
-   demo();
+   
+   
 </script>   
 {% endblock %}
 

@@ -3,13 +3,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-   #giriş sayfaları
+   #auth pages
    path("registration/login/",views.login_request,name="login"),
    path("register",views.register_request,name="register"),
    path("logout",views.logout_request,name="logout"),
 
    #email verification
-   path("tokensend",views.token_send,name="token_send"),
+   path("tokensend",views.token_send,name="tokensend"),
    path("success",views.success,name="success"),
    path("verify/<auth_token>",views.verify,name="verify"),
    
