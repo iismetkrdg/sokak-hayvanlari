@@ -3,7 +3,7 @@
    var cont = true
    async function getKulube() {
 
-      const response = await fetch(`http://agile-basin-70896.herokuapp.com/rest/kulubeler/?page=${page}`)
+      const response = await fetch(`https://agile-basin-70896.herokuapp.com/rest/kulubeler/?page=${page}`)
 
       const kulubeler = await response.json()
       if (kulubeler['next']==null){
