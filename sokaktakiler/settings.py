@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s6lvihxk^)(gx=bk=6*61$s8t^7pflpvirm=*wua7#afws8=@z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','agile-basin-70896.herokuapp.com']
+ALLOWED_HOSTS = ['agile-basin-70896.herokuapp.com','127.0.0.1']
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
@@ -84,13 +84,13 @@ WSGI_APPLICATION = 'sokaktakiler.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'adres.sqlite3',
-        'USER':"root",
-        'HOST':'localhost',
-        'PORT':3306,
-        'PASSWORD':"",
-           
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd9bgtvbqp0rd76',
+        'HOST': 'ec2-54-164-40-66.compute-1.amazonaws.com',
+        'PORT' : 5432,
+        'USER':'dlhrktpyikmmso',
+        'PASSWORD': '4a19b48498d0c67a8ea5eeec8c8683462c4a813856dfcc4e395f5a78b7c296cc',
+
     }
 }
 
@@ -133,7 +133,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=[
     BASE_DIR / "static"
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
