@@ -15,8 +15,8 @@ class Kulube(models.Model):
    created_at = models.DateTimeField(auto_now_add=True)
    sayac = models.IntegerField(default=1)
    img = models.CharField(max_length=100,default=f'{str(random.randint(1,8))}.jpeg')
-   latitude = models.CharField(max_length=20,null=True)
-   longitude = models.CharField(max_length=20,null=True)
+   latitude = models.CharField(max_length=20)
+   longitude = models.CharField(max_length=20)
    dogcat = models.CharField(max_length=20,default='Kedi')
 
    class Meta:
@@ -26,7 +26,7 @@ class Person(models.Model):
    beslemesayisi=models.IntegerField(default=0)
    bildirmesayisi=models.IntegerField(default=0)
    mamakilo=models.IntegerField(default=0)
-   auth_token=models.CharField(max_length=100,null=True)
+   auth_token=models.CharField(max_length=100)
 
    def __str__(self):
       return self.username
