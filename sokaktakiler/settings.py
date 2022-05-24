@@ -148,11 +148,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # email 
-
+SENDGRID_API_KEY = os.getenv('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')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sokaktakilerekibi@gmail.com'
-EMAIL_HOST_PASSWORD = 'sokaktakiler123'
 django_heroku.settings(locals())
