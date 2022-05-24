@@ -67,7 +67,6 @@ def register_request(request):
                   send_mail_after_regis(email,auth_token)
                   return redirect("tokensend")
                except Exception as e:
-                  print('token yok')
                   return redirect("error")
       else:
          return render(request,"registration/register.html",{
