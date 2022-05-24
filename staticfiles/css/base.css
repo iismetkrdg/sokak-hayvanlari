@@ -1,0 +1,155 @@
+.new {
+   background-image: 
+   linear-gradient(135deg,
+   #ffffb2 0,
+   #ffed89 16.67%,
+   #edd75e 33.33%,
+   #c5c02a 50%,
+   #9aaa00 66.67%,
+   #6c9700 83.33%,
+   #398500 100%);
+}
+.color-white {
+   color: whitesmoke;
+}
+.none-center-list {
+   list-style: none;
+   text-align: center;
+}
+.my-navbar {
+   background-color: #ffcd38;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+}
+.border-white {
+   border: 1px solid white;
+   border-radius: 9px;
+}
+.border-black {
+   border: 1px solid black;
+   border-radius: 9px;
+}
+.mymt-1 {
+   margin-top: 1%;
+}
+.mymt-2 {
+   margin-top: 2%;
+}
+.mymt-3 {
+   margin-top: 3%;
+}
+.mymt-4 {
+   margin-top: 4%;
+}
+.mymb-1 {
+   margin-bottom: 1%;
+}
+.mymb-2 {
+   margin-bottom: 2%;
+}
+.mymb-3 {
+   margin-bottom: 3%;
+}
+.mymb-4 {
+   margin-bottom: 4%;
+}
+.text-profil {
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.myfooter {
+   text-align: center;
+   position:static;
+   bottom: 0;
+   opacity: 0.4;
+}
+.pad-5 {
+   padding: 5%;
+}
+.text-login {
+   color: #ffcd38;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.text-login-container {
+   font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.width-100 {
+   width: 100%;
+}
+.ucnokta{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+  overflow:hidden;
+}
+.height-card {
+   height: 15rem;
+}
+.my-button{
+   position:absolute;
+   bottom: 0px;
+   left: 0px;
+
+}
+.my-date-text{
+   position:absolute;
+   bottom: 14px;
+   left: 5px;
+
+}
+.table-title {
+   font-size: 30px;
+   font-family: serif;
+   text-align: center;
+}
+
+
+.my-modal-body{
+   color:sandybrown;
+   text-align: center;
+}
+.my-modal-link{
+   color:rgb(104, 38, 38);
+   text-decoration: none;
+}
+
+.dots-8 {
+   width:12px;
+   height:12px;
+   position: relative;
+   left: 50%;
+   margin-top: 29px;
+   opacity: 0;
+ }
+ .dots-8::before,
+ .dots-8::after {
+   content:"";
+   position: absolute;
+   inset:0;
+   border-radius:50%;
+   background:currentColor;
+ }
+ .dots-8::before {
+   box-shadow: -24px 0 currentColor;
+   animation:d8-1 1s infinite linear;
+ }
+ .dots-8::after {
+   transform: rotate(0deg) translateX(24px);
+   animation:d8-2 1s infinite linear;
+ }
+ 
+ @keyframes d8-1 {
+     100%{transform:translateX(24px)}
+ }
+ @keyframes d8-2 {
+     100%{transform:rotate(-180deg) translateX(24px)}
+ }
+ 
+
+.dots-8.show {
+   opacity: 1;
+}
+.loader-row{
+   height: 40px;
+}
+

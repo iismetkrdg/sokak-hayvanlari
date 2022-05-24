@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s6lvihxk^)(gx=bk=6*61$s8t^7pflpvirm=*wua7#afws8=@z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
@@ -133,7 +133,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=[
     BASE_DIR / "static"
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
