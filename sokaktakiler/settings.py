@@ -13,20 +13,17 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-s6lvihxk^)(gx=bk=6*61$s8t^7pflpvirm=*wua7#afws8=@z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', True)
+DEBUG = False
 
 ALLOWED_HOSTS = ['agile-basin-70896.herokuapp.com']
 
@@ -151,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # email 
-SENDGRID_API_KEY = os.getenv('SENGRID_API_KEY')
+SENDGRID_API_KEY = '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'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = 'apikey'
