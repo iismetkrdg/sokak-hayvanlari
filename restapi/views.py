@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from harita.models import Kulube
+from harita.models import Kulube,Person
 from restapi.serializers import KulubeSerializer , PersonSerializer
 from django.http import Http404, JsonResponse
 from rest_framework.views import APIView
