@@ -51,9 +51,9 @@ class KulubebyLocation(APIView):
       return Response(serializer.data)
 class PersonView(APIView):
    def get(self,request,format=None):
-      personsbildir = list(Person.objects.all().order_by('-bildirmesayisi'))[10]
-      personsbesle = list(Person.objects.all().order_by('-beslemesayisi'))[10]
-      personsmama = list(Person.objects.all().order_by('-mamakilo'))[10]
+      personsbildir = list(Person.objects.all().order_by('-bildirmesayisi'))[0:10]
+      personsbesle = list(Person.objects.all().order_by('-beslemesayisi'))[0:10]
+      personsmama = list(Person.objects.all().order_by('-mamakilo'))[0:10]
       serializer1 = PersonSerializer(personsbildir,many=True)
       serializer2 = PersonSerializer(personsbesle,many=True)
       serializer3 = PersonSerializer(personsmama,many=True)
