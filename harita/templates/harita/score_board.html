@@ -47,9 +47,9 @@
         if (response.status==200){
             const data = await response.json()
             for (let i = 0; i < data['bildir'].length; i++) {
-                $('#besleme').append('<tr><td class="text-left">'+data['besle'][i]['username']+'</td><td class="text-left">'+data['besle'][i]['beslemesayisi']+'</td></tr>')
-                $('#bildirme').append('<tr><td class="text-left">'+data['bildir'][i]['username']+'</td><td class="text-left">'+data['bildir'][i]['bildirmesayisi']+'</td></tr>')
-                $('#mama').append('<tr><td class="text-left">'+data['mama'][i]['username']+'</td><td class="text-left">'+data['mama'][i]['mamakilo']+'</td></tr>')
+                $('#besleme').append('<tr><td class="text-left" width="50%">'+data['besle'][i]['username']+'</td><td class="text-left" width="50%">'+data['besle'][i]['beslemesayisi']+'</td></tr>')
+                $('#bildirme').append('<tr><td class="text-left" width="50%">'+data['bildir'][i]['username']+'</td><td class="text-left" width="50%">'+data['bildir'][i]['bildirmesayisi']+'</td></tr>')
+                $('#mama').append('<tr><td class="text-left" width="50%">'+data['mama'][i]['username']+'</td><td class="text-left" width="50%">'+data['mama'][i]['mamakilo']+'</td></tr>')
             }
         }
         else {
