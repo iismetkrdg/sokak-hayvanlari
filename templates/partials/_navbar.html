@@ -24,10 +24,13 @@
             <li class="nav-item">
                <a href="{% url 'harita' %}" class="nav-link"><i class="bi bi-map"></i> Harita</a>
             </li>
+            <li class="nav-item">
+               <a href="{% url 'scoreboard' %}" class="nav-link"><i class="bi bi-clipboard-data"></i> Skor Tablosu</a>
+            </li>
          </ul>
          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-               <a href="{% url 'iletisim' %}" class="nav-link"> <strong> İletişim</strong></a>
+               <a href="{% url 'iletisim' %}" class="nav-link"><i class="bi bi-headset"></i>İletişim</a>
             </li>
             {% if not user.is_authenticated %}
             <li class="nav-item">
@@ -38,7 +41,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-               <a href="{% url 'profil' user.id %}" class="nav-link"><i class="bi bi-person-circle"></i><strong> Profil </strong></a>
+               <a href="{% url 'profil' user.id %}" class="nav-link"><i class="bi bi-person-circle"></i>Profil</a>
             </li>
             <li class="nav-item">
                <a href="{% url 'logout' %}" class="nav-link"><i class="bi bi-box-arrow-left"></i> <strong> Çıkış yap</strong></a>

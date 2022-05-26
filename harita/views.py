@@ -100,6 +100,8 @@ class ProfilView(DetailView):
 class IletisimView(TemplateView):
    template_name = 'harita/iletisim.html'
 
+class ScoreBoardView(TemplateView):
+   template_name = 'harita/score_board.html'
 
 
 def custom400(request,exception):

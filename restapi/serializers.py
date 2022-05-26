@@ -9,3 +9,9 @@ class KulubeSerializer(serializers.ModelSerializer):
       model = Kulube
       fields = ['id','il','ilce','mahalle','sokak','kapi','aciklama','img','dogcat','sontarih']
 
+class PersonSerializer(serializers.ModelSerializer):
+   class Meta:
+      model = Person
+      fields = ['username','beslemesayisi','bildirmesayisi','mamakilo']
+      
+

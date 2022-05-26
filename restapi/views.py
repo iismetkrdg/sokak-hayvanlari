@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from harita.models import Kulube
-from restapi.serializers import KulubeSerializer
+from restapi.serializers import KulubeSerializer , PersonSerializer
 from django.http import Http404, JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -49,4 +49,17 @@ class KulubebyLocation(APIView):
 
       serializer = KulubeSerializer(gonder,many=True)
       return Response(serializer.data)
-   
+class PersonView(APIView):
+   def get(self,request,format=None):
+      personsbildir = list(Person.objects.all().order_by('-bildirmesayisi'))[10]
+      personsbesle = list(Person.objects.all().order_by('-beslemesayisi'))[10]
+      personsmama = list(Person.objects.all().order_by('-mamakilo'))[10]
+      serializer1 = PersonSerializer(personsbildir,many=True)
+      serializer2 = PersonSerializer(personsbesle,many=True)
+      serializer3 = PersonSerializer(personsmama,many=True)
+      data = {
+         'bildir' : serializer1.data,
+         'besle' : serializer2.data,
+         'mama' : serializer3.data,
+      }
+      return Response(data)

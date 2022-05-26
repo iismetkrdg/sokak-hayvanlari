@@ -7,6 +7,7 @@ urlpatterns = [
     re_path(r'^kulubeler/$', views.KulubeList.as_view()),
     path('kulubeler/<pk>/',views.KulubeDetail.as_view()),
     path('kulubeler/<lat>/<lon>',views.KulubebyLocation.as_view()),
+    path('persons/',views.PersonView.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

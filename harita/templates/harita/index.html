@@ -45,61 +45,6 @@
  </div>
 {% endif %}
 <div class="container mt-4">
-   <div class="row border-black">
-      <h5 class="text-center table-title mt-4">SKOR TABLOLARI</h5>
-      <div class="row ">
-         <div class="col-sm-4">
-            <table class="table table-sm">
-               <thead>
-                  <th>Kullanıcı Adı</th>
-                  <th>Besleme</th>
-               </thead>
-               <tbody>
-                  {% for data in besleme %}
-                  <tr>
-                     <td>{{data.username}}</td>
-                     <td class="text-center">{{data.beslemesayisi}}</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
-         </div>
-         <div class="col-sm-4">
-            <table class="table table-sm">
-               <thead>
-                  <th>Kullanıcı Adı</th>
-                  <th>Yuva Bildirme</th>
-               </thead>
-               <tbody>
-                  {% for data in yuvabildirme %}
-                  <tr>
-                     <td>{{data.username}}</td>
-                     <td class="text-center">{{data.bildirmesayisi}}</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
-         </div>
-         <div class="col-sm-4">
-            <table class="table table-sm">
-               <thead>
-                  <th>Kullanıcı Adı</th>
-                  <th>Mama(gr)</th>
-               </thead>
-               <tbody>
-                  {% for data in mamakg %}
-                  <tr>
-                     <td>{{data.username}}</td>
-                     <td class="text-center">{{data.mamakilo}}</td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
-         </div>
-      </div>
-   </div>
-   <br>
-   <hr>
    <br>
    <div class="row" id='kulube'></div>
    <div class="row loader-row">
