@@ -17,9 +17,7 @@
                     <th>Kullanıcı Adı</th>
                     <th>Besleme</th>
                  </thead>
-                 <tbody>
-                    <tr id = 'besleme'></tr>
-                 </tbody>
+                 <tbody id = 'besleme'></tbody>
               </table>
            </div>
            <div class="col-sm-4">
@@ -28,9 +26,7 @@
                     <th>Kullanıcı Adı</th>
                     <th>Yuva Bildirme</th>
                  </thead>
-                 <tbody>
-                    <tr id="bildirme"></tr>
-                 </tbody>
+                 <tbody id="bildirme"></tbody>
               </table>
            </div>
            <div class="col-sm-4">
@@ -39,11 +35,7 @@
                     <th>Kullanıcı Adı</th>
                     <th>Mama(gr)</th>
                  </thead>
-                 <tbody>
-                    {% for data in mamakg %}
-                    <tr id="mama"></tr>
-                    {% endfor %}
-                 </tbody>
+                 <tbody id="mama"></tbody>
               </table>
            </div>
         </div>
@@ -55,9 +47,9 @@
         if (response.status==200){
             const data = await response.json()
             for (let i = 0; i < data['bildir'].length; i++) {
-                $('#besleme').append('<td class="text-center">'+data['besle'][i]['username']+'</td><td class="text-center">'+data['besle'][i]['beslemesayisi']+'</td>')
-                $('#bildirme').append('<td class="text-center">'+data['bildir'][i]['username']+'</td><td class="text-center">'+data['bildir'][i]['beslemesayisi']+'</td>')
-                $('#mama').append('<td class="text-center">'+data['mama'][i]['username']+'</td><td class="text-center">'+data['mama'][i]['beslemesayisi']+'</td>')
+                $('#besleme').append('<tr><td class="text-center">'+data['besle'][i]['username']+'</td><td class="text-center">'+data['besle'][i]['beslemesayisi']+'</td></tr>')
+                $('#bildirme').append('<tr><td class="text-center">'+data['bildir'][i]['username']+'</td><td class="text-center">'+data['bildir'][i]['beslemesayisi']+'</td></tr>')
+                $('#mama').append('<tr><td class="text-center">'+data['mama'][i]['username']+'</td><td class="text-center">'+data['mama'][i]['beslemesayisi']+'</td></tr>')
             }
         }
         else {
