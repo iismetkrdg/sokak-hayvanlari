@@ -9,7 +9,7 @@
 <div class="container new mt-3 mb-4 border-white">
     <div class="row border-black">
         <h5 class="text-center table-title mt-4">SKOR TABLOLARI</h5>
-        <div class="alert alert-success text-center mt-4" id="foralert"></div>
+        <div id="foralert"></div>
         <div class="row ">
            <div class="col-sm-4">
               <table class="table table-sm">
@@ -53,7 +53,7 @@
             }
         }
         else {
-            $('#foralert').append('<div>Bir hata oluştu.</div>')
+            $('#foralert').append('<div class="alert alert-success text-center mt-4">Bir hata oluştu.</div>')
         }
         
         
