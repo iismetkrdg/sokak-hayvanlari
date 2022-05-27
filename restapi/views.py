@@ -39,6 +39,8 @@ class KulubeDetail(APIView):
       return Response(serializer.data)
    def delete(self,request,pk,format=None):
       kulube = self.get_object(pk)
+      if not request.user.is_authenticated:
+         return Response({'status':'403','data':'sign up'})
       kulube.delete()
       return Response({'status':'203','data':'item deleted'})
 class KulubebyLocation(APIView):

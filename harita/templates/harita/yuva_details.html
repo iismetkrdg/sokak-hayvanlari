@@ -99,7 +99,17 @@
          },
          body: null
       })
-      location.replace('https://agile-basin-70896.herokuapp.com/');
+      if (response.json()['data']=='sign up'){
+         var cevap = window.confirm('Yuva silebilmek için giriş yapmanız gerekmektedir.')
+         if (cevap){
+            location.replace('https://agile-basin-70896.herokuapp.com/registration/login/');
+         }else{
+            location.replace('https://agile-basin-70896.herokuapp.com/');
+         }
+      }else{
+         location.replace('https://agile-basin-70896.herokuapp.com/');
+      }
+
    }
 
    $(function() {
