@@ -64,8 +64,12 @@
    async function deletekulube(){
       const response = await fetch('https://agile-basin-70896.herokuapp.com/rest/kulubeler/'+id+'/',{
          method:'DELETE',
+         headers: {
+         'Content-Type': 'application/json'
+         },
+         body: null
       })
-      location.replace('https://agile-basin-70896.herokuapp.com/');
+      //location.replace('https://agile-basin-70896.herokuapp.com/');
    }
    function validateForm() {
       var x = document.forms["form1"]["kackilo"].value;
