@@ -99,7 +99,8 @@
          },
          body: null
       })
-      if (response.json()['data']=='sign up'){
+      const data = await response.json()
+      if (data['data']=='sign up'){
          var cevap = window.confirm('Yuva silebilmek için giriş yapmanız gerekmektedir.')
          if (cevap){
             location.replace('https://agile-basin-70896.herokuapp.com/registration/login/');
