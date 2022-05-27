@@ -5,9 +5,9 @@
 
 
 {% block content %} 
-<div class="container">
+<div class="container col-md-8 offset-md-2">
    <div class="row mt-4">
-      <div class="col-md-10 offset-md-1">
+      <div>
          <div class="card">
             <div class="card-body">
                <p>Yuva {{yuva.il|title}},{{yuva.ilce|title}},{{yuva.mahalle|title}},{{yuva.sokak|title}} konumunda 
@@ -23,10 +23,10 @@
             Bu yuva 1 kg mamayı yaklaşık {{oran}} günde bitiriyor.
          </div>
       </div>
-      <div class="mt-2">
-         <div class="col-md-6 offset-md-4">
+      <div class="row mt-2">
+         <div class="">
             {% if user.is_authenticated %}
-            <form name="form1" method="POST" onsubmit="return validateForm()">
+            <form name="form1" method="POST" onsubmit="validateForm()">
                {% csrf_token %}         
                <input class="form-control" style="width: 15em; float: left;" name="kackilo" type="text" placeholder="Kaç gram mama bıraktınız?" aria-label="default input example">
                <input hidden type="text" value="{{kulube.id}}" name="id">
@@ -36,14 +36,19 @@
             <div class="alert alert-success text-center mt-4">
                Mama bırakmak için üye olunuz.
             </div>
-               
             {% endif %}
          </div>
       </div>
    </div>
    <div class="row mt-4">
-      <div class="col-md-10 offset-md-1">
+      <div>
          {{m|safe}}
+      </div>
+   </div>
+   <div class="row mt-4">
+      <div class="col-md-8 offset-md-2">
+         <p hidden id="kulubeid">{{yuva.id}}</p>
+         <input type="submit" id="delete" class= "btn btn-secondary" onclick="deletekulube()" value="Yuva yerinde değilse silebilirsiniz.">
       </div>
    </div>
 </div>
@@ -55,21 +60,29 @@
 
 
 <script>
-function validateForm() {
-   var x = document.forms["form1"]["kackilo"].value;
-   if (x == "") {
-     alert("Kaç gram mama bıraktığınızı yazmalısınız.");
-     return false;
+   const id = document.getElementById('kulubeid').innerHTML
+   async function deletekulube(){
+      const response = await fetch('https://agile-basin-70896.herokuapp.com/rest/kulubeler/'+id,{
+         method:'delete',
+      })
+      location.replace('https://agile-basin-70896.herokuapp.com/');
    }
-   if (x < 50) {
-     alert("Minimum değer 50 gramdır.");
-     return false;
-   }
-   if (x > 5000) {
-      alert("Gerçekten 5 kg üzeri mama bıraktıysanız parçalayarak yazınız.");
+   function validateForm() {
+      var x = document.forms["form1"]["kackilo"].value;
+      if (x == "") {
+      alert("Kaç gram mama bıraktığınızı yazmalısınız.");
       return false;
+      }
+      if (x < 50) {
+      alert("Minimum değer 50 gramdır.");
+      return false;
+      }
+      if (x > 5000) {
+         alert("Gerçekten 5 kg üzeri mama bıraktıysanız parçalayarak yazınız.");
+         return false;
+      }
    }
- }
+
 </script>
 
 {% endblock %}

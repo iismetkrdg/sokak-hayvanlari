@@ -37,6 +37,10 @@ class KulubeDetail(APIView):
       kulube = self.get_object(pk)
       serializer = KulubeSerializer(kulube)
       return Response(serializer.data)
+   def delete(self,request,pk,format=None):
+      kulube = self.get_object(pk)
+      kulube.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
 class KulubebyLocation(APIView):
    def get(self,request,lat,lon,format=None):
       gonder = []
