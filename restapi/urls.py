@@ -5,7 +5,7 @@ from restapi import views
 urlpatterns = [
 
     re_path(r'^kulubeler/$', views.KulubeList.as_view()),
-    path(r'kulubeler/<pk>/$',views.KulubeDetail.as_view()),
+    path('kulubeler/<pk>/',views.KulubeDetail.as_view()),
     path('kulubeler/<lat>/<lon>',views.KulubebyLocation.as_view()),
     path('persons/',views.PersonView.as_view()),
 ]
