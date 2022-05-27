@@ -40,7 +40,7 @@ class KulubeDetail(APIView):
    def delete(self,request,pk,format=None):
       kulube = self.get_object(pk)
       kulube.delete()
-      return Response(status=status.HTTP_204_NO_CONTENT)
+      return Response({'status':'203','data':'item deleted'})
 class KulubebyLocation(APIView):
    def get(self,request,lat,lon,format=None):
       gonder = []
