@@ -64,7 +64,7 @@ class YuvaBildirView(View):
          return redirect('home')
       form = YuvaBildirForms(request.POST)
       if form.is_valid():
-         location = geocoder.osm(form.cleaned_data.get('il')+","+form.cleaned_data.get('sokak'))
+         location = geocoder.osm(form.cleaned_data.get('il')+","+form.cleaned_data.get('ilce')+","+form.cleaned_data.get('sokak'))
          if not location.lat:
             messages.add_message(request,messages.ERROR,'Girdiğiniz bilgilere ait konum bulunamadı.')
             return redirect('home')
