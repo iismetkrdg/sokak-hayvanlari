@@ -16,12 +16,6 @@ from django.views import View
 class WelcomeView(TemplateView):
 
    template_name = "harita/index.html"
-   def get_context_data(self, **kwargs):
-      context = super().get_context_data(**kwargs)
-      context['besleme'] = list(Person.objects.all())[:3]
-      context['yuvabildirme'] = list(Person.objects.all().order_by('-bildirmesayisi'))[:3]
-      context['mamakg'] = list(Person.objects.all().order_by('-mamakilo'))[:3]
-      return context
 
 class HaritaView(ListView):
    model = Kulube

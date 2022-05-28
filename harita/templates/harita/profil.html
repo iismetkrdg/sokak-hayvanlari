@@ -21,17 +21,38 @@
          {% endif %}
          <div class="row mb-3 bg-light border-white">
             <div class="col-md-6 offset-md-3">
-               <div class="row mt-4" style="padding: 1%;">
-                  <div class="col-md-6 text-profil">
-                     <p>Kullanıcı adı</p><p>Ad</p><p>Soyad</p><p>Email</p><p>Besleme Sayısı</p>
-                  </div>
-                  <div class="col-md-2">
-                     <p>:</p><p>:</p><p>:</p><p>:</p><p>:</p>
-                  </div>
-                  <div class="col-md-4 text-profil" >
-                     <p>{{person.username}} </p><p>{{user.first_name}} </p><p>{{user.last_name}} </p><p>{{user.email}} </p><p>{{person.beslemesayisi}} </p> 
-                  </div>
-               </div>
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="text-left" width="50%">Kullanıcı adı</td>
+                        <td class="text-left" width="50%">{{person.username}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">İsim</td>
+                        <td class="text-left" width="50%">{{user.first_name}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">Soyisim</td>
+                        <td class="text-left" width="50%">{{user.last_name}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">E-mail</td>
+                        <td class="text-left" width="50%">{{user.email}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">Besleme Sayısı</td>
+                        <td class="text-left" width="50%">{{person.beslemesayisi}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">Bildirme Sayısı</td>
+                        <td class="text-left" width="50%">{{person.bildirmesayisi}}</td>
+                     </tr>
+                     <tr>
+                        <td class="text-left" width="50%">Mama miktarı</td>
+                        <td class="text-left" width="50%">{{person.mamakilo}}(gr)</td>
+                     </tr>
+                  </tbody>
+               </table>
             </div>
          </div>
       </div>
