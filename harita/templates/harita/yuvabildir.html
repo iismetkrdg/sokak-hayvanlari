@@ -31,7 +31,7 @@
                <input id='sokak' type="text" name="sokak" placeholder="Sokak girin" class="form-control">
             </div>
             <div class="col">
-               <label for="kapı" class="form-label">Bina No</label>
+               <label for="kapi" class="form-label">Bina No</label>
                <input type="text" name="kapi" placeholder="Yuvaya Yakın Bir Bina No" class="form-control">
             </div>
          </div>
@@ -57,23 +57,28 @@
 <script type="text/javascript">
    
    function validateForm() {
-      var x = document.forms["form"]["il"].value;
+      var x = document.forms["form"]["kapi"].value;
       if (x == "") {
+        alert("Kapı no yoksa 0 yazın!");
+        return false;
+      }
+      var b = document.forms["form"]["il"].value;
+      if (b == "") {
+        alert("İl girin!");
+        return false;
+      }
+      var c = document.forms["form"]["ilce"].value;
+      if (c == "") {
+        alert("İlçe girin!");
+        return false;
+      }
+      var d = document.forms["form"]["mahalle"].value;
+      if (d == "") {
         alert("Mahalle adı girin!");
         return false;
       }
-      var x = document.forms["form"]["ilce"].value;
-      if (x == "") {
-        alert("Mahalle adı girin!");
-        return false;
-      }
-      var x = document.forms["form"]["mahalle"].value;
-      if (x == "") {
-        alert("Mahalle adı girin!");
-        return false;
-      }
-      var x = document.forms["form"]["sokak"].value;
-      if (x == "") {
+      var a = document.forms["form"]["sokak"].value;
+      if (a == "") {
         alert("Sokak adı girin!");
         return false;
       }
