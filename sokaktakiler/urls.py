@@ -24,5 +24,5 @@ urlpatterns = [
     path('rest/',include('restapi.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]
-handler400 = 'harita.views.custom400'
-handler404 = 'harita.views.custom404'
+# handler400 = 'harita.views.custom400'
+# handler404 = 'harita.views.custom404'

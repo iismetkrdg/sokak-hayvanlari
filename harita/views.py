@@ -98,7 +98,7 @@ class ScoreBoardView(TemplateView):
    template_name = 'harita/score_board.html'
 
 
-def custom400(request,exception):
-   return render(request,'harita/not-found.html',status=400)
-def custom404(request,exception):
-   return render(request,'harita/not-found.html',status=404)
+# def custom400(request,exception):
+#    return render(request,'harita/not-found.html',status=400)
+# def custom404(request,exception):
+#    return render(request,'harita/not-found.html',status=404)
