@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s6lvihxk^)(gx=bk=6*61$s8t^7pflpvirm=*wua7#afws8=@z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['agile-basin-70896.herokuapp.com','webmaster@localhost']
+ALLOWED_HOSTS = ['agile-basin-70896.herokuapp.com']
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
@@ -155,4 +155,5 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'sokaktakilerekibi@gmail.com'
 django_heroku.settings(locals())
