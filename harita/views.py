@@ -1,6 +1,4 @@
-from typing import List
 from django.contrib.auth.models import User
-from django.http import request
 from django.shortcuts import redirect, render
 import folium
 from .models import Kulube, Person
