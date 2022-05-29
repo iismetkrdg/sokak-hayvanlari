@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'sokaktakiler.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd9bgtvbqp0rd76',
-        'HOST': 'ec2-54-164-40-66.compute-1.amazonaws.com',
+        'NAME' : os.environ.get('DB_NAME'),
+        'HOST' : os.environ.get('DB_HOST'),
         'PORT' : 5432,
-        'USER':'dlhrktpyikmmso',
-        'PASSWORD': '4a19b48498d0c67a8ea5eeec8c8683462c4a813856dfcc4e395f5a78b7c296cc',
+        'USER' : os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
 
     }
 }
